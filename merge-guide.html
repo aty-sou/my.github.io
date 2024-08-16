@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Git マージ方法ガイド</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="content">
+        <h1>Git マージ方法ガイド</h1>
+        
+        <h2>1. 現在のブランチで作業をコミットする</h2>
+        <p>まず、現在のブランチでのすべての変更をコミットしていない場合は、コミットしておきます。</p>
+        <pre><code>git add .
+git commit -m "現在のブランチの変更をコミット"</code></pre>
+
+        <h2>2. `main` ブランチに切り替える</h2>
+        <p>次に、`main` ブランチに切り替えます。</p>
+        <pre><code>git checkout main</code></pre>
+
+        <h2>3. `main` ブランチにマージする</h2>
+        <p>その後、現在のブランチの内容を `main` ブランチにマージします。現在のブランチ名を `<current-branch>` として、以下のコマンドを実行します。</p>
+        <pre><code>git merge &lt;current-branch&gt;</code></pre>
+
+        <h2>4. 競合がある場合の対応</h2>
+        <p>もし競合（コンフリクト）が発生した場合、VSCode などのエディタを使って手動で解決し、解決後に以下のコマンドで競合の解消をコミットします。</p>
+        <pre><code>git add .
+git commit -m "競合を解決"</code></pre>
+
+        <h2>5. リモートリポジトリにプッシュする</h2>
+        <p>最後に、ローカルの `main` ブランチをリモートリポジトリにプッシュします。</p>
+        <pre><code>git push origin main</code></pre>
+
+        <h2>補足</h2>
+        <p>`main` ブランチに統合された後、現在のブランチが不要になった場合は、以下のコマンドで削除することもできます。</p>
+        <pre><code>git branch -d &lt;current-branch&gt;</code></pre>
+
+        <p><a href="index.html">ホームに戻る</a></p>
+    </div>
+</body>
+</html>
