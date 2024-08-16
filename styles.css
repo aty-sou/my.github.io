@@ -1,0 +1,41 @@
+body {
+    background-color: #ffffff; /* 白い背景 */
+    color: #4d4d4d; /* グレーの文字色 */
+    font-family: 'Roboto', sans-serif; /* Google FontsのRobotoフォント */
+    margin: 0;
+    padding: 20px;
+}
+
+.content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+h1 {
+    color: #333333; /* 少し濃いグレーの見出し */
+    text-align: center;
+}
+
+ul {
+    list-style-type: none; /* リストマーカーを削除 */
+    padding: 0;
+}
+
+li {
+    margin-bottom: 20px;
+    line-height: 1.6; /* 読みやすさを向上させる行間 */
+}
+
+.section-title {
+    font-weight: bold;
+    color: #333333; /* 見出し部分も濃いグレー */
+}
+
+a {
+    color: #0066cc; /* リンクはブルー */
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
