@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Git コマンドガイド</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="content">
+        <h1>Git コマンドガイド</h1>
+        
+        <h2>シェルスクリプトで `add`, `commit`, `push` を一括実行する方法</h2>
+        <p>以下のシェルスクリプトを使用することで、`git add`, `git commit`, `git push` を一括で実行できます。</p>
+        
+        <h3>1. スクリプトを作成する</h3>
+        <p>以下の内容を含むシェルスクリプトファイル（例えば `git-deploy.sh`）を作成します。</p>
+        <pre><code>#!/bin/bash
+
+# ステージング
+git add .
+
+# コミット
+git commit -m "Update changes"
+
+# プッシュ
+git push origin $(git branch --show-current)</code></pre>
+
+        <h3>2. スクリプトに実行権限を付与する</h3>
+        <p>スクリプトファイルに実行権限を付与します。</p>
+        <pre><code>chmod +x git-deploy.sh</code></pre>
+
+        <h3>3. スクリプトを実行する</h3>
+        <p>以下のコマンドでスクリプトを実行します。</p>
+        <pre><code>./git-deploy.sh</code></pre>
+
+        <p>このスクリプトは、現在のブランチに対して `git add`, `git commit`, `git push` を順に実行します。コミットメッセージは `"Update changes"` としていますが、必要に応じて変更してください。</p>
+
+        <p><a href="index.html">ホームに戻る</a></p>
+    </div>
+</body>
+</html>
