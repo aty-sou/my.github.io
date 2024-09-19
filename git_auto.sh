@@ -7,4 +7,4 @@ git add .
 git commit -m "$1"
 
 # リモートリポジトリにプッシュ
-git push
+git push origin main
