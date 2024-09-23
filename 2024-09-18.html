@@ -6,9 +6,7 @@
     <title>進捗バー</title>
     <style>
         body {
-            font-family: 'Courier New', Courier, monospace;
-            background-color: #111;
-            color: #00ff00;
+            font-family: monospace;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -17,73 +15,53 @@
         }
 
         .container {
-            text-align: center;
-            max-width: 600px;
+            text-align: left;
+            max-width: 400px;
             width: 100%;
         }
 
-        h1 {
-            font-size: 2em;
-            margin-bottom: 20px;
-        }
-
-        label, input {
-            font-size: 1.5em;
-        }
-
-        input[type="number"] {
+        .input-field {
+            font-family: monospace;
             width: 100px;
-            height: 50px;
-            font-size: 1.5em;
-            background-color: #222;
-            color: #00ff00;
-            border: 2px solid #00ff00;
-            text-align: center;
+            height: 40px;
+            font-size: 1.2em;
+            border: 1px solid;
         }
 
-        .progress-container {
+        .progress-bar-container {
             width: 100%;
-            background-color: #333;
-            border-radius: 15px;
-            margin-top: 20px;
-            height: 50px;
-            overflow: hidden;
+            border: 1px solid;
+            margin-top: 10px;
+            height: 25px;
+            position: relative;
         }
 
         .progress-bar {
             height: 100%;
-            background-color: #00ff00;
             width: 0%;
+            background-color: currentColor;
+            position: absolute;
+        }
+
+        .progress-text {
+            font-size: 0.9em;
+            position: absolute;
+            width: 100%;
             text-align: center;
-            line-height: 50px;
-            color: #111;
-            font-size: 1.2em;
-        }
-
-        button {
-            margin-top: 20px;
-            padding: 10px 20px;
-            font-size: 1.5em;
-            background-color: #00ff00;
-            color: #111;
-            border: none;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #33ff33;
+            top: 50%;
+            transform: translateY(-50%);
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>進捗バー</h1>
-        <label for="progress-input">800問中、解いた問題数を入力してください:</label><br>
-        <input type="number" id="progress-input" max="800" min="0" value="0"><br>
-        <button onclick="updateProgress()">表示</button>
+        <label>800問中、解いた問題数:</label><br>
+        <input class="input-field" type="number" id="progress-input" max="800" min="0" value="0"><br>
+        <button onclick="updateProgress()">更新</button>
 
-        <div class="progress-container">
-            <div id="progress-bar" class="progress-bar">0%</div>
+        <div class="progress-bar-container">
+            <div id="progress-bar" class="progress-bar"></div>
+            <span id="progress-text" class="progress-text">0%</span>
         </div>
     </div>
 
@@ -91,15 +69,12 @@
         function updateProgress() {
             var progressInput = document.getElementById("progress-input").value;
             var progressBar = document.getElementById("progress-bar");
+            var progressText = document.getElementById("progress-text");
             var totalQuestions = 800;
             var progressPercent = (progressInput / totalQuestions) * 100;
 
-            if (progressInput >= 0 && progressInput <= totalQuestions) {
-                progressBar.style.width = progressPercent + "%";
-                progressBar.innerHTML = Math.floor(progressPercent) + "%";
-            } else {
-                alert("0から800の間で数字を入力してください。");
-            }
+            progressBar.style.width = progressPercent + "%";
+            progressText.textContent = Math.floor(progressPercent) + "%";
         }
     </script>
 </body>
